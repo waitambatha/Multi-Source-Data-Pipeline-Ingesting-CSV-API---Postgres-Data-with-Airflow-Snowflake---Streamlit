@@ -1,6 +1,11 @@
+Below is the updated README file with a refined title, project description, and a corrected Mermaid flow diagram that should render properly on GitHub:
+
+---
+
+```markdown
 # Multi-Source Data Pipeline: Ingesting CSV, API, and Postgres Data with Airflow, Snowflake, and Streamlit
 
-This project is an end-to-end data pipeline that ingests data from multiple sources—CSV, API, and Postgres—and loads it into Snowflake. Airflow orchestrates the data ingestion tasks via dedicated DAGs, and Streamlit is used for interactive data visualization. The entire solution is containerized using Docker Compose.
+This project is an end-to-end data pipeline that ingests data from multiple sources — CSV, API, and Postgres — and loads it into Snowflake. Apache Airflow orchestrates the data ingestion tasks via dedicated DAGs, and Streamlit is used for interactive data visualization. The entire solution is containerized using Docker Compose.
 
 ## Project Components
 
@@ -13,7 +18,7 @@ This project is an end-to-end data pipeline that ingests data from multiple sour
   - **DAG `upload_schools_csv`:** Reads the CSV and loads the data into Snowflake.
   - **DAG `transfer_consumption_data`:** Extracts consumption data from Postgres and loads it into Snowflake.
   - **DAG `transfer_healthcare_data`:** Fetches healthcare data from an API and loads it into Snowflake.
-  - All DAGs include default arguments (owner, start date, retries, retry delay), a daily schedule, and are not paused upon creation.
+  - All DAGs include default arguments (owner, start date, retries, retry delay), are scheduled to run daily, and are not paused upon creation.
 
 - **Data Warehouse: Snowflake**
   - Automatically creates tables based on the incoming data.
@@ -29,32 +34,35 @@ This project is an end-to-end data pipeline that ingests data from multiple sour
 
 ## Flow Diagram
 
+Below is a Mermaid diagram representing the overall project flow.  
+*Ensure your Markdown viewer or GitHub supports Mermaid diagrams.*
+
 ```mermaid
 flowchart TD
-    A[Data Sources]
-    A1[CSV File (Schools)]
-    A2[Open API (Healthcare)]
-    A3[Postgres (Consumption)]
-    
-    B[Airflow DAGs]
-    B1[upload_schools_csv]
-    B2[transfer_consumption_data]
-    B3[transfer_healthcare_data]
-    
-    C[Snowflake Data Warehouse]
-    D[Streamlit Dashboard]
+    A["Data Sources"]
+    A1["CSV File (Schools)"]
+    A2["Open API (Healthcare)"]
+    A3["Postgres (Consumption)"]
+
+    B["Airflow DAGs"]
+    B1["upload_schools_csv"]
+    B2["transfer_consumption_data"]
+    B3["transfer_healthcare_data"]
+
+    C["Snowflake Data Warehouse"]
+    D["Streamlit Dashboard"]
+    End["End User"]
 
     A1 -->|Ingest| B1
     A2 -->|Ingest| B3
     A3 -->|Ingest| B2
-    
+
     B1 -->|Load Data| C
     B2 -->|Load Data| C
     B3 -->|Load Data| C
-    
-    C -->|Consolidated Data| D
 
-    D -->|Interactive Visualization| End[End User]
+    C -->|Consolidated Data| D
+    D -->|Interactive Visualization| End
 ```
 
 ## Setup Instructions
@@ -63,7 +71,7 @@ flowchart TD
 
    ```bash
    git clone https://github.com/waitambatha/Multi-Source-Data-Pipeline-Ingesting-CSV-API---Postgres-Data-with-Airflow-Snowflake---Streamlit.git
- 
+   cd Multi-Source-Data-Pipeline-Ingesting-CSV-API---Postgres-Data-with-Airflow-Snowflake---Streamlit
    ```
 
 2. **Generate the CSV File**
@@ -79,12 +87,12 @@ flowchart TD
    Create a `.env` file in the project root with your Snowflake credentials:
 
    ```dotenv
-   SNOWFLAKE_USER=TKWAITA
-   SNOWFLAKE_PASSWORD=Mbatha45
-   SNOWFLAKE_ACCOUNT=UZ20522.ap-south-1.aws
-   SNOWFLAKE_DATABASE=AB_DATABASE
-   SNOWFLAKE_SCHEMA=AB_SCHEMA
-   SNOWFLAKE_WAREHOUSE=AB_WAREHOUSE
+   SNOWFLAKE_USER=user
+   SNOWFLAKE_PASSWORD=password
+   SNOWFLAKE_ACCOUNT=account
+   SNOWFLAKE_DATABASE=database
+   SNOWFLAKE_SCHEMA=schema
+   SNOWFLAKE_WAREHOUSE=warehouse
    ```
 
 4. **Build and Start the Docker Containers**
@@ -99,14 +107,16 @@ flowchart TD
    - Start a Postgres container as the Airflow metadata database.
    - Run an `airflow-init` service that initializes the Airflow database and creates the admin user.
    - Launch Airflow webserver and scheduler containers (which share the same secret key).
-   
+
 5. **Access the Services**
 
    - **Airflow UI:** Open [http://localhost:8080](http://localhost:8080) and log in using the credentials `admin/admin`.
    - **Streamlit Dashboard:** Run the Streamlit app:
+
      ```bash
      streamlit run streamlit_app.py
      ```
+
      Then access the dashboard in your browser at the default port (usually [http://localhost:8501](http://localhost:8501)).
 
 ## Project Structure
@@ -133,4 +143,4 @@ project/
   
 - **Extensibility:**  
   The pipeline is designed to be easily extended to include additional data sources or transformations as needed.
-
+```
