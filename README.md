@@ -1,8 +1,3 @@
- **Multi-Source Data Pipeline: Ingesting CSV, API, and Postgres Data with Airflow, Snowflake, and Streamlit**
-
-This project demonstrates an end-to-end data pipeline that ingests data from three distinct sources—a CSV file, an open-source API, and a Postgres database—and loads them into Snowflake. Apache Airflow orchestrates the data ingestion tasks, while a Streamlit dashboard provides interactive visualizations of the consolidated data.
-
----
 # Multi-Source Data Pipeline: Ingesting CSV, API, and Postgres Data with Airflow, Snowflake, and Streamlit
 
 This project is an end-to-end data pipeline that ingests data from multiple sources—CSV, API, and Postgres—and loads it into Snowflake. Airflow orchestrates the data ingestion tasks via dedicated DAGs, and Streamlit is used for interactive data visualization. The entire solution is containerized using Docker Compose.
@@ -67,8 +62,8 @@ flowchart TD
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/waitambatha/Multi-Source-Data-Pipeline-Ingesting-CSV-API---Postgres-Data-with-Airflow-Snowflake---Streamlit/new/main?filename=README.md
-   cd <repository_directory>
+   git clone https://github.com/waitambatha/Multi-Source-Data-Pipeline-Ingesting-CSV-API---Postgres-Data-with-Airflow-Snowflake---Streamlit.git
+ 
    ```
 
 2. **Generate the CSV File**
