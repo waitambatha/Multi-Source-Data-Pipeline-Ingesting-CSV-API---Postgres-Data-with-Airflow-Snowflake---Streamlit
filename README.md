@@ -1,8 +1,3 @@
-Below is the updated README file with a refined title, project description, and a corrected Mermaid flow diagram that should render properly on GitHub:
-
----
-
-```markdown
 # Multi-Source Data Pipeline: Ingesting CSV, API, and Postgres Data with Airflow, Snowflake, and Streamlit
 
 This project is an end-to-end data pipeline that ingests data from multiple sources — CSV, API, and Postgres — and loads it into Snowflake. Apache Airflow orchestrates the data ingestion tasks via dedicated DAGs, and Streamlit is used for interactive data visualization. The entire solution is containerized using Docker Compose.
